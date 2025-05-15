@@ -1,0 +1,18 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: config-server    # Name of this Spring Boot application
+  profiles:
+    active: git            # Activate the 'git' profile
+  cloud:
+    config:
+      server:
+        git:
+          uri: 'https://github.com/VendoSell/config-repo.git'  # Remote Git repository URI for config files
+          default-label: master        # Default branch/label to use
+          timeout: 5                   # Timeout in seconds for Git operations
+          clone-on-start: true         # Clone the repo when the server starts
+          force-pull: true             # Force pull to always get the latest changes
+          search-paths: '{application}' # Paths to search for config files in the repo
